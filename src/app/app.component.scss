@@ -1,0 +1,169 @@
+.container {
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    .clearfix {
+        clear: both;
+    }
+    .left-section {
+        width: 220px;
+        display: inline-block;
+        .box {
+            border: 1px solid black;
+            min-width: 170px;
+            display: inline-block;
+            padding: 10px;
+            margin-bottom: 30px;
+            &:last-of-type {
+                margin-bottom: 0px;
+            }
+            .title {
+                font-weight: bold;
+                font-size: 18px;
+            }
+            .glyphicon-check:before {
+                padding-right: 5px;
+            }
+            .text {
+                display: block;
+                line-height: 2.5;
+                font-family: monospace;
+                cursor: pointer;
+                &:hover {
+                    background-color: antiquewhite;
+                }
+                &.active {
+                    background-color: aqua;
+                }
+            }
+        }
+    }
+    .right-section {
+        width: calc(100% - 220px);
+        float: right;
+        .filter {
+            margin-bottom: 10px;
+            .searching {
+                display: inline-block;
+            }
+            .sorting {
+                float: right;
+                top: 20px;
+                position: relative;
+            }
+        }
+        .selected-filter {
+            margin-bottom: 10px;
+            div {
+                display: inline-block;
+                background-color: grey;
+                color: white;
+                padding: 0 5px;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-right: 10px;
+                &:last-of-type {
+                    margin-right: 0px;
+                }
+            }
+        }
+        .characters {
+            background-color: black;
+            padding-left: 0.50%;
+            padding-right: 0.50%;
+            .character {
+                margin: .5%;
+                border-radius: 5px;
+                width: 24%;
+                display: inline-block;
+                background-color: aqua;
+                .image {
+                    position: relative;
+                    img {
+                        border-radius: 5px;
+                    }
+                    .on-image {
+                        position: absolute;
+                        bottom: 0%;
+                        width: 100%;
+                        background-color: black;
+                        opacity: 0.65;
+                        color: white;
+                        padding: 5px 0 5px 10px;
+                        .name {
+                            font-size: 20px;
+                        }
+                    }
+                }
+                .other-detail {
+                    padding: 10px;
+                    .desc {
+                        border-bottom: 1px solid black;
+                        padding: 7px 0;
+                        &:last-of-type {
+                            border-bottom: none;
+                        }
+                        div:nth-of-type(1) {
+                            width: 60px;
+                            display: inline-block;
+                        }
+                        div:nth-of-type(2) {
+                            float: right;
+                            width: calc(100% - 70px);
+                            text-align: right;
+                        }
+                        .clearfix {
+                            clear: right;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    .container .right-section .characters .character {
+        width: 49%;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    .container {
+        border: none;
+        .left-section {
+            min-width: 290px;
+            .box {
+                display: block;
+            }
+        }
+        .right-section {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .container .right-section .filter {
+        .searching {
+            width: 100%;
+            input[type="text"] {
+                width: calc(100% - 61px);
+            }
+        }
+        .sorting {
+            float: none;
+            margin-bottom: 20px;
+            select {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .container .right-section .characters .character {
+        width: 99%;
+    }
+}

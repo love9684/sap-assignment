@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="left-section">
+    <h3>Filters</h3>
+    <div class="box" *ngFor="let filter of filters">
+      <div class="title">{{filter.category}}</div>
+      <div class="glyphicon glyphicon-check text" *ngFor="let subFilter of filter.values" [ngClass]="{'active': filterValues[filter.category] === subFilter.value}" (click)="selectFilter(filter.category, subFilter.value)">{{subFilter.name}}</div>
+    </div>
+  </div>
+  <div class="right-section">
+    <h3>Selected Filters</h3>
+    <div class="selected-filter">
+      <div *ngFor="let item of filterValues | keyvalue" (click)="removeFilter(item)">{{item.key}}-{{item.value}} &nbsp;X</div>
+    </div>
+    <div class="filter">
+      <div class="searching">
+        <div>Search by Name</div>
+        <input type="text" [(ngModel)]="searchValue"><button>Search</button>
+      </div>
+      <div class="sorting">
+        <select [(ngModel)]="sortById">
+          <option value="" disabled selected hidden>Sort by ID</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="characters">
+      <div class="character" *ngFor="let obj of characters | filterCharacters: {searchValue: searchValue, sortById: sortById, filterValues: filterValues}">
+        <div class="image">
+          <img [src]="obj.image" alt="" height="220px" width="100%">
+          <div class="on-image">
+            <div class="name">{{obj.name}}</div>
+            <div>id: {{obj.id}} - Created {{obj.created | dateAgo}}</div>
+          </div>
+        </div>
+        <div class="other-detail">
+          <div class="desc">
+            <div>STATUS</div>
+            <div>{{obj.status}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="desc">
+            <div>SPECIES</div>
+            <div>{{obj.species}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="desc">
+            <div>GENDER</div>
+            <div>{{obj.gender}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="desc">
+            <div>ORIGIN</div>
+            <div>{{obj.origin?.name}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="desc">
+            <div>LAST LOCATION</div>
+            <div>{{obj.location?.name}}</div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
